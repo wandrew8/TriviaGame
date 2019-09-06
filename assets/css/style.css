@@ -1,0 +1,114 @@
+body {
+    font-family: 'Hind Siliguri', sans-serif;
+    color: #fff;
+    font-size: 1em;
+    padding: 1%;
+    text-align: center;
+}
+
+.gradient {
+    height: 75vh;
+    width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-image: url("../images/ocean.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;  
+}
+
+.pattern {
+    background: linear-gradient(45deg, #2e86de -10%, transparent 50%, transparent 50%, #2e86de 110%), repeating-linear-gradient(240deg, #2f3640 0%, transparent 5%, transparent 10%);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 75vh;
+    position: relative;
+}
+
+.backgroundImage {
+    background-image: url("../images/waves.png");
+    height: 300vh;
+    width: 100%;
+    opacity: 0.8;
+}
+
+.jumbotron {
+    height: 50%;
+    width: 100%;
+    background: linear-gradient(45deg, #0652DD, #12CBC4);
+    margin-bottom: 1%;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    z-index: 5;
+}
+
+.main-content {
+    height: auto;
+    background: linear-gradient(45deg, #0652DD, #12CBC4);
+    width: 100%;
+    text-align: center;
+    border-radius: 30px;
+    margin: 0px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    z-index: 5;
+    padding: 0% 3% 5% 3%;
+}
+
+h1 {
+    font-family: 'Amatic SC', cursive;
+    font-size: 8em;
+    color: #fff;
+}
+
+h2 {
+    font-family: 'Amatic SC', cursive;
+    font-size: 4em;
+    color: #fff;
+    text-align: center;
+    padding-top: 5%;
+}
+
+p {
+    font-family: 'Hind Siliguri', sans-serif;
+    color: #fff;
+    font-size: 1.5em;
+    padding-top: 2%;
+    text-align: center;
+}
+
+input {
+    color: #fff;
+    font-size: 1em;
+    line-height: 1.2em;
+    margin-right: 2%;
+}
+
+.questions {
+    vertical-align: middle;
+
+}
+
+.timer {
+    font-size: 3em;
+    padding-top: 1em;
+    margin: 0 auto;
+    color: #fff;
+    font-family: 'Amatic SC', cursive;
+}
+
+.container-fluid {
+    padding: 0px;
+}
+
+button {
+    background: #fff;
+    height: 2em;
+    width: 6em;
+    margin: 3%;
+    color: #444;
+}
+
+#resultsDisplay {
+    margin: 0 auto;
+}
