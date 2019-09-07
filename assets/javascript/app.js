@@ -10,13 +10,10 @@ var game = {
 
     timerCard: $("#timer"),
     questionCard: $("#questionsAnswers"),
-    startButton: $("#startButton"),
     rules: $("#rules"),
     buttonClick: $("#startButton"),
     submitClick: $("#submitButton"),
     results: $("#resultsDisplay"),
-    reset: $("#resetButton"),
-
 
     //Array of question objects
     questionsArray: [
@@ -65,13 +62,11 @@ var game = {
 
     //This function appends the timer, rules, and start button to the page
     openBrowser: function () {
-        game.startButton.append('<br><button onclick="game.startGame()" id="startButton">Let\'s Start</button>');
         game.rules.append("<p>Let's see how much you know about the ocean and some of the sea creatures that call it home. Can you answer all the questions correctly in just two minutes? Click the button to start your quiz!</p>");
+        game.rules.append('<br><button onclick="game.startGame()" id="startButton">Let\'s Start</button>');
 
         game.buttonClick.on("click", function () {
         })
-
-
     },
 
     //This function resets the game and sets the questions to the screen once the start button is pressed
@@ -82,23 +77,20 @@ var game = {
         game.timer();
         game.timerCard.empty();
         game.rules.empty();
-        game.startButton.empty();
         game.results.empty();
-        game.reset.empty();
 
         //This appends the questions and answers to the page using a loop and a nested loop 
         for (var i = 0; i < game.questionsArray.length; i++) {
             game.questionCard.append("<p>" + game.questionsArray[i].question + "</p>")
             for (var j = 0; j < game.questionsArray[i].answers.length; j++) {
-                game.questionCard.append('<input type="radio" value="' + game.questionsArray[i].answers[j] + '">' + game.questionsArray[i].answers[j] + "<br>")
+                game.questionCard.append(`<input type=radio value= "${game.questionsArray[i].answers[j]}" name=${i}> ${game.questionsArray[i].answers[j]} <br>`)
             }
         }
         //This appends the submit button at the bottom of the page
         game.questionCard.append('<button onclick="game.submitAnswers()" id="submitButton">Submit</button>');
 
-        game.submitClick.on("click", function () {
+        game.questionCard.on("click", function () {
         })
-
     },
 
     //This function begins the timer once the start button has been pressed
@@ -106,14 +98,12 @@ var game = {
 
         clearInterval(intervalId);
         intervalId = setInterval(game.timerCountDown, 1000)
-
     },
 
     //Resets the timer to 121 seconds
     resetTimer: function () {
         timer = 121;
         game.timerCard.html("<span>- Timer: " + timer + " seconds remaining -</span>")
-
     },
 
     //Creates a countdown timer that stops and goes to results page when the timer reaches zero
@@ -124,7 +114,6 @@ var game = {
             game.timerStop();
             game.submitAnswers();
         }
-
     },
 
     //Clears the timer interval
@@ -134,9 +123,10 @@ var game = {
 
     //This function stops the timer and clears the questions once the submit button is pressed
     submitAnswers: function () {
+        console.log("inside submitAnsers")
         game.timerCard.empty();
-        game.questionCard.empty();
         game.createScore();
+        game.questionCard.empty();
         game.timerStop();
         window.scrollTo(0, 0);
 
@@ -144,13 +134,22 @@ var game = {
 
     //This function calculates how many answers were correct and outputs the score to the screen along with a reset button
     createScore: function () {
-        // if ( value of input game.questionsArray[i].answers[j] === game.questionsArray.correctAnswer[i]) {
-        game.correct++;
 
-        // }
+        // console.log($("input:checked").val());
+        console.log("inside create score")
+        
+        // userGuess = document.getElementById(game.questionsArray[0].correctAnswer);
+        for (var i = 0; i < this.questionsArray.length; i++){
+
+        console.log($("input[name="+i+"]:checked").val(),game.questionsArray[i].correctAnswer,i);
+        if ($("input[name="+i+"]:checked").val() === game.questionsArray[i].correctAnswer) {
+            game.correct++;
+
+        }
+    }
         game.results.append("<h2>Congratulations! Here are your results</h2><p>You got " + game.correct + " out of 8 questions correct.</p>")
-        game.reset.append('<button onclick="game.startGame()">Try Again</button>');
-        game.reset.on("click", function () {
+        game.results.append('<button onclick="game.startGame()">Try Again</button>');
+        game.results.on("click", function () {
         })
 
     },
