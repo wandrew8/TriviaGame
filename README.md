@@ -1,1 +1,2 @@
 # TriviaGame
+Here is a simple app that runs a timed trivia quiz and outputs the results on the final page. This was built with HTML, CSS for styling along with bootstrap framework, and Javascript to run the game dynamics. Send me a comment or question at wandrew8@gmail.com.
